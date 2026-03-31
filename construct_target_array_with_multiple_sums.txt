@@ -1,0 +1,34 @@
+Working backwards from target to an array of all 1s
+
+Step 1: Turn target array into a max heap
+
+Step 2: Check if target already is a single element array with the value 1
+
+Step 3: Find the sum of all elements in the array - store in a variable "total"
+
+Step 4: Loop indefinetely
+
+Step 5: Pop the largest element off the heap - store in a variable "largest"
+
+Step 6: If largest is equal to 1 return True. Since the elements in the array are bound between 1 and 10^9, if 1 is the largest element,
+then all of the other elements are also equal to 1
+
+
+Step 7: Find the sum of the remaining items in the heap by taking: total - largest
+
+Step 8: If that remaining sum is equal to 0 return False. This means that there is only one element left in the heap, and it isn't 1
+
+Step 9: Find the value of the previous element by taking: largest % rest_sum
+Instead of repeatedly subtracting rest_sum from largest, we can find out how many times rest_sum can subtract from largest immidiately.
+
+Step 10: If the previous element is equal to 0. If prev were left as 0, it would be an invalid array value, so we backtrack by 1 subtraction.
+
+Step 11: If the previous element is less than 1, return false. Again tihs implies that the array cannot be transformed into
+an array of all ones.
+
+Step 12: Set the original total to: rest_sum + prev
+
+Step 13: If prev is equal to largest, return False. This means that largest was smaller than rest_sum. That means the largest element
+is already smaller than the sum of everything else, so no further reduction is valid, and the array couldn't have been produced. 
+
+Step 14: Push the previous element onto the heap
