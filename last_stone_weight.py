@@ -10,9 +10,7 @@ class Solution:
             root = heapq.heappop_max(stones)
             child = heapq.heappop_max(stones)
 
-            if root == child:
-                continue
-            else:
+            if root != child:
                 num = root - child
                 heapq.heappush_max(stones, num)
             
